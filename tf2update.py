@@ -4,7 +4,8 @@ import urllib.parse
 import time
 import os
 import ctypes
-
+import winsound
+import sys
 
 #creates a first html file of the news page for reference later in the code
 url2 = 'http://www.teamfortress.com/?tab=news' #editable to any page on the site (or any site really)
@@ -47,6 +48,7 @@ while loop == 1:
         else:                                    #if they're different, the page has changed and therefore something has happened, usually a news blog post
             print("new update found to the tf2 news blog.")
             loop = 2
+            winsound.PlaySound("*", winsound.SND_ALIAS)
             ctypes.windll.user32.MessageBoxA(0, "An update has been found!", "TF2 news blog update", 1)
         version = version + 1
     except Exception as e:
