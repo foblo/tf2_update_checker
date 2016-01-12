@@ -3,9 +3,9 @@ import urllib.request
 import urllib.parse
 import time
 import os
-import ctypes
-import winsound
 import sys
+import ctypes
+
 
 #creates a first html file of the news page for reference later in the code
 url2 = 'http://www.teamfortress.com/?tab=news' #editable to any page on the site (or any site really)
@@ -15,9 +15,9 @@ req = urllib.request.Request(url2, headers = headers)
 resp = urllib.request.urlopen(req)
 respData = resp.read()
 
-saveFile = open('news1.html', 'w')
-saveFile.write(str(respData))
-saveFile.close
+with open('news1.html', 'w') as saveFile:
+
+    saveFile.write(str(respData))
 
 
 
@@ -43,12 +43,12 @@ while loop == 1:
         saveFile.close
         time.sleep(10) #subject to a lot of change, just for quick testing
         filesame = filecmp.cmp(str(title1)+'.html',str(title2)+'.html',shallow=False) #compares the latest and second latest .html files of the page, checking for updates
-        if filesame == True: #if they're the same, nothing changed
+        if filesame: #if they're the same, nothing changed
             print('nothing found yet')
+            os.remove(str(title2)+'.html')
         else:                                    #if they're different, the page has changed and therefore something has happened, usually a news blog post
             print("new update found to the tf2 news blog.")
             loop = 2
-            winsound.PlaySound("*", winsound.SND_ALIAS)
             ctypes.windll.user32.MessageBoxA(0, "An update has been found!", "TF2 news blog update", 1)
         version = version + 1
     except Exception as e:
