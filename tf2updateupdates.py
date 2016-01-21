@@ -91,7 +91,7 @@ while loop == 1:
         else:                                    #if they're different, the page has changed and therefore something has happened, usually a news blog post
             print("new update found to the tf2 update blog.")
             loop = 2
-            winsound.PlaySound("!", winsound.SND_ALIAS)
+            winsound.PlaySound("notify.wav", winsound.SND_FILENAME)
             balloon_tip("TF2 update found", "there has been an update to the /updates page, probably a new tf2 update")
         version = version + 1
     except Exception as e:
