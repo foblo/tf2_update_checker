@@ -4,6 +4,7 @@ checks for updates on a page (currently set to the news blog of teamfortress.com
 beta version 0.8
 <br>
 <b>changelog</b>
+<br>
 -0.2 added sound upon window notification
 <br>
 -0.3 notifications
